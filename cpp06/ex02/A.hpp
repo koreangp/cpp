@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 17:52:06 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/15 18:27:12 by pscala           ###   ########.fr       */
+/*   Created: 2025/04/22 18:53:12 by pscala            #+#    #+#             */
+/*   Updated: 2025/04/22 18:56:28 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "color.hpp"
+#include "Base.hpp"
 
-class ScalarConverter
+class A : public Base
 {
-  private:
-	ScalarConverter();
-	~ScalarConverter();
-
-  public:
-	static void convert(const std::string &str);
 };

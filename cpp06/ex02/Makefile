@@ -1,14 +1,13 @@
-NAME := Convert
+NAME := Base
 CC := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 HEADER := Color.hpp \
-		  ScarlConverter.hpp
-
+		  Base.hpp
 
 
 SRC :=	main.cpp \
-		ScalarConverter.cpp
+		Base.cpp
 
 
 

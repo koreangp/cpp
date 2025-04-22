@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/15 18:55:48 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/15 18:57:31 by pscala           ###   ########.fr       */
+/*   Created: 2025/04/18 14:45:18 by pscala            #+#    #+#             */
+/*   Updated: 2025/04/22 18:08:05 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#pragma once
 
-int main(int ac, char **av)
+#include "Color.hpp"
+
+struct	Data
 {
-	if (ac == 2)
-	{
-		ScalarConverter::convert(av[1]);
-		return (0);
-	}
-	return (1);
-}
+	std::string name;
+};

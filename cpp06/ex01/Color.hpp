@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.hpp                                          :+:      :+:    :+:   */
+/*   Color.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:49:00 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/15 17:53:09 by pscala           ###   ########.fr       */
+/*   Updated: 2025/04/22 18:02:11 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <string>
-#include <exception>
-
+#include <cctype>
+#include <stdint.h>
 
 // Couleurs de base
 const std::string RESET = "\033[0m";
