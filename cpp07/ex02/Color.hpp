@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:49:00 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/25 05:15:36 by pscala           ###   ########.fr       */
+/*   Updated: 2025/04/25 06:00:18 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <cstddef>
+#include <exception>
 
 // Couleurs de base
 const std::string RESET = "\033[0m";

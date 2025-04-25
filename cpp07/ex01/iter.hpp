@@ -6,14 +6,13 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 00:35:23 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/25 01:59:07 by pscala           ###   ########.fr       */
+/*   Updated: 2025/04/25 05:15:30 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Color.hpp"
-#include <cstddef>
 
 template<typename T>
 void print(const T &t)
