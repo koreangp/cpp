@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/26 18:15:40 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/26 19:55:52 by pscala           ###   ########.fr       */
+/*   Updated: 2025/04/30 01:25:26 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ Span::~Span()
 {
 }
 
-void Span::addNumber(const int numb)
+void Span::addNumber(const int nb)
 {
 	if (_span.size() >= _size)
 		throw std::out_of_range("Span is full !");
-	_span.push_back(numb);
+	_span.push_back(nb);
 }
 
 int Span::shortestSpan()
 {
 
 	if (_span.size() < 2 || std::adjacent_find(_span.begin(), _span.end(), std::not_equal_to<int>()) == _span.end())
-	throw std::out_of_range("There is no shortest span !");
+		throw std::out_of_range("There is no shortest span !");
 
 	std::vector<int> tmp = _span;
 	std::sort(tmp.begin(), tmp.end());
@@ -63,11 +63,18 @@ int Span::shortestSpan()
 int Span::longestSpan()
 {
 	if (_span.size() < 2 || std::adjacent_find(_span.begin(), _span.end(), std::not_equal_to<int>()) == _span.end())
-	throw std::out_of_range("There is no longest span !");
+		throw std::out_of_range("There is no longest span !");
 
 	std::vector<int> tmp = _span;
 	std::sort(tmp.begin(), tmp.end());
 
-	return (_span[_span.back()] - _span[_span.back()]);
+	return (tmp.back() - tmp.front());
 }
 
+void Span::addRange(std::vector<int>::iterator start, std::vector<int>::iterator end)
+{
+	if (_span.size() + std::distance(start, end) > _size)
+		throw std::out_of_range("Not enough space in Span to add the specified range");
+
+	_span.insert(_span.end(), start, end);
+}

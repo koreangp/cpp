@@ -6,20 +6,22 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:49:00 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/30 03:28:08 by pscala           ###   ########.fr       */
+/*   Updated: 2025/04/30 03:28:12 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <algorithm>
 #include <cstddef>
 #include <cstdlib>
+#include <deque>
 #include <exception>
 #include <iostream>
+#include <stack>
+#include <list>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <limits>
 
 // Couleurs de base
 const std::string RESET = "\033[0m";

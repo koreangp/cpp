@@ -1,13 +1,12 @@
-NAME := Span
+NAME := Abomination
 CC := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 HEADER := Color.hpp \
-		  Span.hpp
+		  MutantStack.hpp
 
 
-SRC :=	main.cpp \
-		Span.cpp
+SRC :=	main.cpp
 
 
 
