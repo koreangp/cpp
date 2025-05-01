@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:51:46 by pscala            #+#    #+#             */
-/*   Updated: 2025/05/01 05:35:53 by pscala           ###   ########.fr       */
+/*   Updated: 2025/05/01 05:40:37 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void BitcoinExchange::parseData(std::string data)
 			//ajouter la key et la value a ma map
 			;
 	}
+	if (_data.empty())
+		throw std::runtime_error("Error : no data in file");
+
 }
 
 bool BitcoinExchange::parseLine(std::istringstream &ss, std::string &date, std::string &btcValue)
