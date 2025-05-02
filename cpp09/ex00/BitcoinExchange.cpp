@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:51:46 by pscala            #+#    #+#             */
-/*   Updated: 2025/05/01 05:40:37 by pscala           ###   ########.fr       */
+/*   Updated: 2025/05/02 02:15:56 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,30 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const std::string csvFile)
 {
-
+	parseData(csvFile);
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &cpy)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &cpy) : _data(cpy._data)
 {
-
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &src)
 {
-
+	if (this != &src)
+		_data = src._data;
+	return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange()
 {
+}
 
+double	BitcoinExchange::GetBtcValue(const std::string &date)
+{
+	std::map<std::string, double>::iterator it = _data.upper_bound(date);
+
+	--it;
+	return (it->second);
 }
 
 void BitcoinExchange::parseData(std::string data)
@@ -51,12 +59,16 @@ void BitcoinExchange::parseData(std::string data)
 		std::string date, btcValue;
 
 		if (parseLine(ss, date, btcValue))
-			//ajouter la key et la value a ma map
-			;
+		{
+			if (_data.find(date) == _data.end())
+			{
+				double dValue = std::strtod(btcValue.c_str(), NULL);
+				_data[date] = dValue;
+			}
+		}
 	}
 	if (_data.empty())
 		throw std::runtime_error("Error : no data in file");
-
 }
 
 bool BitcoinExchange::parseLine(std::istringstream &ss, std::string &date, std::string &btcValue)
@@ -113,37 +125,30 @@ bool BitcoinExchange::isValidDate(const std::string &date)
 	if (!isStrDigits(year) || !isStrDigits(month) || !isStrDigits(day))
 		return false;
 
-	if (!isValidYear(year) || !isValidMonth(month) || !isValidDay(day, month, year))
-		return false;
-}
-
-bool BitcoinExchange::isValidYear(const std::string &year)
-{
-	int intYear = std::atoi(year.c_str());
-
-	if (intYear > 9999)
+	if (!isValidYear(year, month, day))
 		return false;
 
 	return true;
 }
 
-bool BitcoinExchange::isValidMonth(const std::string &month)
-{
-	int intMonth = std::atoi(month.c_str());
-
-	if (intMonth <= 0 || intMonth > 12)
-		return false;
-
-	return true;
-
-}
-
-bool BitcoinExchange::isValidDay(const std::string &day, const std::string &month, const std::string &year)
+bool BitcoinExchange::isValidYear(const std::string &year, const std::string &month, const std::string &day)
 {
 	int intDay = std::atoi(day.c_str());
 	int intMonth = std::atoi(month.c_str());
 	int intYear = std::atoi(year.c_str());
 
+	if (intYear < 2009 || intYear > 9999)
+		return false;
+	if (intYear == 2009)
+	{
+		if (intMonth < 1)
+			return false;
+		if (intMonth == 1 && intDay < 2)
+			return false;
+	}
+
+	if (intMonth <= 0 || intMonth > 12)
+		return false;
 
 	if (intDay < 1 || intDay > 31)
 		return false;
@@ -151,13 +156,14 @@ bool BitcoinExchange::isValidDay(const std::string &day, const std::string &mont
 		return false;
 	if (intMonth == 2)
 	{
-		bool isLeap = (intYear % 4 == 0 && (intYear % 100 != 0 || intYear % 400 == 0));
-		if ((isLeap && intDay > 29) || (!isLeap && intDay > 28))
+		bool bissextil = (intYear % 4 == 0 && (intYear % 100 != 0 || intYear % 400 == 0));
+		if ((bissextil && intDay > 29) || (!bissextil && intDay > 28))
 			return false;
 	}
-
 	return true;
+
 }
+
 
 bool BitcoinExchange::isStrDigits(const std::string &str)
 {
@@ -171,5 +177,11 @@ bool BitcoinExchange::isStrDigits(const std::string &str)
 
 bool BitcoinExchange::isValidValue(const std::string &value)
 {
+	char *end;
+	double dValue = std::strtod(value.c_str(), &end);
 
+	if (*end != '\0' || value.c_str() == end)
+		return false;
+
+	return true;
 }
