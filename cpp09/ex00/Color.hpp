@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:49:00 by pscala            #+#    #+#             */
-/*   Updated: 2025/05/01 04:44:58 by pscala           ###   ########.fr       */
+/*   Updated: 2025/05/19 18:20:55 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <map>
 #include <string>
 #include <sstream>
+#include <limits>
 #include <cctype>
 
 // Couleurs de base

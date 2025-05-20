@@ -3,11 +3,13 @@ CC := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 HEADER := Color.hpp \
-		  BitcoinExchange.hpp
+		  BitcoinExchange.hpp \
+		  parsing.hpp
 
 
 SRC :=	main.cpp \
-		BitcoinExchange.cpp
+		BitcoinExchange.cpp \
+		parsing.cpp
 
 
 
