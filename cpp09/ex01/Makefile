@@ -1,15 +1,13 @@
-NAME := BtcExchange
+NAME := RPN
 CC := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 HEADER := Color.hpp \
-		  BitcoinExchange.hpp \
-		  parsing.hpp
+		  RPN.hpp
 
 
 SRC :=	main.cpp \
-		BitcoinExchange.cpp \
-		parsing.cpp
+		RPN.cpp
 
 
 
