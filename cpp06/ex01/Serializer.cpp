@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 14:37:38 by pscala            #+#    #+#             */
-/*   Updated: 2025/04/22 18:25:38 by pscala           ###   ########.fr       */
+/*   Updated: 2025/06/09 18:23:18 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ Serializer::~Serializer()
 
 Serializer::Serializer(const Serializer &cpy)
 {
+	(void) cpy;
 }
 
 Serializer &Serializer::operator=(const Serializer &src)
 {
+	(void) src;
+	return (*this);
 }
 
 uintptr_t Serializer::serialize(Data *ptr)
