@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 18:05:23 by pscala            #+#    #+#             */
-/*   Updated: 2025/05/20 20:16:22 by pscala           ###   ########.fr       */
+/*   Updated: 2025/07/04 23:03:31 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ bool parseLine(std::istringstream &ss, std::string &date, std::string &btcValue,
 
 		if (date.empty() || btcValue.empty())
 			return false;
-
 
 		if (!isValidDate(date))
 			return false;

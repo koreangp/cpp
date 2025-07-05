@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 00:51:34 by pscala            #+#    #+#             */
-/*   Updated: 2025/05/20 20:17:17 by pscala           ###   ########.fr       */
+/*   Updated: 2025/07/04 23:00:57 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int main(int ac, char **av)
 			return (1);
 		}
 	}
-	std::cerr << BOLD << RED << "Error: could not open file." << RESET << std::endl;
+	std::cerr << BOLD << RED << "Error: wrong number of arguments." << RESET << std::endl;
 	return (1);
 }
