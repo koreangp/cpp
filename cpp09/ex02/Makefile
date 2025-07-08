@@ -3,11 +3,11 @@ CC := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -g
 
 HEADER := Color.hpp \
-		  RPN.hpp
+		  PmergeMe.hpp
 
 
 SRC :=	main.cpp \
-		RPN.cpp
+		PmergeMe.cpp
 
 
 

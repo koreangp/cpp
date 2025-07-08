@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:49:00 by pscala            #+#    #+#             */
-/*   Updated: 2025/07/05 01:08:32 by pscala           ###   ########.fr       */
+/*   Updated: 2025/07/08 06:28:08 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #include <limits>
 #include <cctype>
 #include <deque>
+#include <vector>
+#include <climits>
+#include <iomanip>
+#include <utility>
 
 // Reset
 #define RESET "\033[0m"
