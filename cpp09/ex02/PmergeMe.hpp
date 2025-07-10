@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 23:34:08 by pscala            #+#    #+#             */
-/*   Updated: 2025/07/08 08:08:58 by pscala           ###   ########.fr       */
+/*   Updated: 2025/07/10 09:07:44 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ class PmergeMe
   private:
 	std::vector<int> _vector;
 	std::deque<int> _deque;
-	std::vector<std::pair<int, int>> _pairs;
-	int _orphan;
+	std::vector<std::pair<int, int> > _pairs;
+	std::vector<std::pair<int, size_t> > _maxPosInMainChain;
+	int _incel;
 
 	PmergeMe();
 
@@ -26,13 +27,13 @@ class PmergeMe
 	Container	RecursiveSort(const Container& values);
 
 	template <typename Container>
-	Container buildChainMax(const std::vector<std::pair<int, int> > &pairs);
+	Container SortMax();
 
 	template <typename Container>
 	void pairUp(const Container &container);
 
 	template <typename Container>
-	void fordJohnsonSort(const Container &container);
+	void fordJohnsonSort(Container &container);
 
 
   public:
@@ -72,16 +73,30 @@ Container PmergeMe::RecursiveSort(const Container& values)
 	return sortedLeft;
 }
 
-//MaxSort
+//SortMax
 template <typename Container>
-Container PmergeMe::buildChainMax(const std::vector<std::pair<int, int> > &pairs)
+Container PmergeMe::SortMax()
 {
-	Container maxValues;
-	for (size_t i = 0; i < pairs.size(); ++i)
-		maxValues.push_back(pairs[i].first);
+	Container sortedMax;
+	for (size_t i = 0; i < _pairs.size(); ++i)
+		sortedMax.push_back(pairs[i].first);
 
-	Container mainChain = RecursiveSort(maxValues);
-	return (maxValues);
+	Container mainChain = RecursiveSort(sortedMax);
+
+	for (size_t i = 0; i < _pairs.size(); ++i)
+	{
+		int min = _pairs[i].second;
+		int max = _pairs[i].first;
+
+		typename Container::iterator pos = std::find(mainChain.begin(), mainChain.end(), max);
+		if (pos != mainChain.end())
+		{
+			size_t index = std::distance(mainChain.begin(), pos);
+			_maxPosInMainChain.push_back(std::make_pair(min, index));
+		}
+	}
+
+	return (sortedMax);
 }
 
 //Pairs
@@ -89,7 +104,7 @@ template <typename Container>
 void PmergeMe::pairUp(const Container &container)
 {
 	_pairs.clear();
-	_orphan = -1;
+	_incel = -1;
 
 	typename Container::const_iterator it = container.begin();
 
@@ -100,7 +115,7 @@ void PmergeMe::pairUp(const Container &container)
 
 		if (it == container.end())
 		{
-			_orphan = first;
+			_incel = first;
 			break;
 		}
 
@@ -111,11 +126,12 @@ void PmergeMe::pairUp(const Container &container)
 	}
 }
 
-//Ford.JSON
+//FordJSON
 template <typename Container>
-void PmergeMe::fordJohnsonSort(const Container &container)
+void PmergeMe::fordJohnsonSort(Container &mainChain)
 {
 	// std::sort(container.begin(), container.end());
-	pairUp(container);
-	Container mainChain = buildChainMax<Container>(_pairs);
+	pairUp(mainChain);
+	mainChain = SortMax<Container>();
+
 }
