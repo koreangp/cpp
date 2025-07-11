@@ -6,7 +6,7 @@
 /*   By: pscala <pscala@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 23:31:21 by pscala            #+#    #+#             */
-/*   Updated: 2025/07/08 06:07:41 by pscala           ###   ########.fr       */
+/*   Updated: 2025/07/11 05:56:13 by pscala           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,15 @@ int main(int ac, char **av)
 			}
 			numbers.push_back(nbr);
 		}
+		
+		if (numbers.size() <= 1)
+		{
+			std::cerr << BRED << "ERROR: Not enough number to sort : " << numbers.size() << RESET << std::endl;
+			return (1);
+		}
+
 		PmergeMe doom(numbers);
 		doom.sortAndMeasure();
-
 		return (0);
 	}
 	std::cerr << BRED << "ERROR: Wrong number of arguments" << RESET << std::endl;
